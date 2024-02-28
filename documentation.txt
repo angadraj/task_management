@@ -1,0 +1,35 @@
+# design decisions
+
+Tables: 
+    Task, User
+
+Relationship:
+    One to Many: Each user can have as many tasks he can
+
+Table Details: 
+    User: name, email, password (contains hashed string of original password), is_active (for soft deletion)
+    Task: title, description, due_date (for setting deadline), status, is_active, user_id (foreign key) 
+
+
+# chosen technologies
+
+languageL node js
+framework: express js
+database: mongoose
+modules: bcrypt, body-parser, cors, dotenv, email-validator, jsonwebtoken, nodemon
+
+
+# features
+
+Auth: this module is supported by secure JWT token which allows user to securely interact with app.
+
+1. signup: user can signup using his name & email address
+2. login: user can login with his email
+
+Tasks: this app provides various CRUD operations to user.
+
+1. add: user can add his tasks with title, description, due_date, status (priority)
+2. update: user can update his task data anytime with the above parameters in (1)
+3. list: user can see all this active tasks
+4. delete: user can delete his tasks when he wants. (it will still persist in database in case he wants to track his data)
+5. get a task: user can view any task at a time he wants.
