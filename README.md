@@ -64,3 +64,7 @@ output: [
         "CANCELLED",
         "COMPLETED"
     ]
+
+# docker
+
+add mongo db url and jwt token in compose file to spin up the container

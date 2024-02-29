@@ -8,6 +8,6 @@ services:
       - "5001:5001"
 
     environment:
-      - MONGO_DB_LINK=mongodb+srv://AngadRajSingh:root@cluster0.ogdrv.mongodb.net/?retryWrites=true&w=majority
+      - MONGO_DB_LINK=<link>
       - PORT=5001
-      - JWT_TOKEN=dserfoefenfiefneifnefnjklskowwoercvnfbe8213
+      - JWT_TOKEN=<token>
