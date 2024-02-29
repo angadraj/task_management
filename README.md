@@ -29,7 +29,7 @@ login: POST /api/v1/auth/login
 auth token: 
     Authorization: Bearer token
 
-get all tasks: GET /api/v1/task/list
+get all tasks: GET /api/v1/task/list?page=1&page_size=10&status=TO_DO
 
 get task: GET /api/v1/task/:id
 

@@ -14,6 +14,7 @@ export const taskController = {
             // Extracting page and page size from query parameters or using default values
             const page = parseInt(req.query.page) ?? 1;
             const pageSize = parseInt(req.query.page_size) ?? 10;
+            const status = req.query.status ?? null;
 
             // Validate the page number
             if (page <= 0) {
@@ -21,10 +22,16 @@ export const taskController = {
             }
 
             // Retrieve tasks from the database based on user_id and is_active
-            const tasks = await TaskModel.find({
+            const taskQuery = {
                 user_id: req.user_id,
-                is_active: true
-            }).sort({ "due_date": -1 }).skip((page - 1) * pageSize).limit(pageSize);
+                is_active: true,
+            }
+
+            if (status) {
+                taskQuery.status = status;
+            }
+
+            const tasks = await TaskModel.find(taskQuery).sort({ "due_date": -1 }).skip((page - 1) * pageSize).limit(pageSize);
 
             // Send response with fetched tasks
             return sendResponse(reply, 200, "Tasks fetched", null, tasks);
